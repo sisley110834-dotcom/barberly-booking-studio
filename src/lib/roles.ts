@@ -8,5 +8,5 @@ export const ROLE_OPTIONS: { label: string; value: Role }[] = [
 export const DEFAULT_ROLE: Role = "customer";
 
 export function isBarber(metadata: Record<string, unknown> | null | undefined): boolean {
-  return metadata?.role === "shop";
+  return metadata?.["role"] === "shop";
 }

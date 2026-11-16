@@ -74,23 +74,24 @@ default auth.users; capture the chosen role in auth user metadata only). Those
 come in later milestones. Stick to landing page + role-tab auth + the
 role-aware /barbers placeholder shell.
 
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/ed7c448d-275d-4be7-bf4f-685364da5fb4).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+The app is a plain Vite + React single-page app using react-router-dom for
+client-side routing (`/`, `/login`, `/barbers`). You need Node.js and npm.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm install
+npm run dev      # local dev server
+npm run build    # production build into dist/
+npm test         # vitest
 ```
+
+Supabase is configured through `VITE_SUPABASE_URL` and
+`VITE_SUPABASE_PUBLISHABLE_KEY` (see `.env`).
+
+## Deploying to Vercel
+
+Vercel detects Vite automatically (build command `npm run build`, output
+directory `dist`). `vercel.json` rewrites every path to `index.html` so deep
+links such as `/login` and `/barbers` are handled by the client-side router.
+Set the two `VITE_SUPABASE_*` variables in the Vercel project settings.

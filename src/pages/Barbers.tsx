@@ -1,26 +1,15 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "react-router-dom";
+import { usePageTitle } from "@/hooks/use-page-title";
+import { useAuthUser } from "@/components/RequireAuth";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Wordmark } from "@/components/Wordmark";
 import { isBarber } from "@/lib/roles";
 
-export const Route = createFileRoute("/_authenticated/barbers")({
-  head: () => ({
-    meta: [
-      { title: "Your Barberly — Barbers" },
-      { name: "description", content: "Your Barberly home." },
-      { property: "og:title", content: "Your Barberly" },
-      { property: "og:description", content: "Your Barberly home." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-  }),
-  component: BarbersPage,
-});
-
-function BarbersPage() {
-  const { user } = Route.useRouteContext();
+export default function BarbersPage() {
+  usePageTitle("Your Barberly — Barbers");
+  const user = useAuthUser();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const barber = isBarber(user.user_metadata);
@@ -29,7 +18,7 @@ function BarbersPage() {
     await queryClient.cancelQueries();
     queryClient.clear();
     await supabase.auth.signOut();
-    navigate({ to: "/login", replace: true });
+    navigate("/login", { replace: true });
   }
 
   return (

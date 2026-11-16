@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Account role lives only in auth user metadata (`role`: customer | shop) for now; helpers in src/lib/roles.ts — why: no app tables until later milestones.
+- Signed-in pages live under src/routes/_authenticated/ (client-only gate redirecting to /login) — why: session is in browser storage.

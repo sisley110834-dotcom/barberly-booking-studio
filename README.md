@@ -42,8 +42,7 @@ The site must include:
     (destination is a placeholder for v1).
     - Footer with copyright "© 2026 Barberly".
 
-2. Authentication using Lovable's built-in Supabase-style auth (Lovable Cloud
-    is fine for v1; we'll swap to a user-owned Supabase project later):
+2. Authentication using Supabase Auth (our own Supabase project):
     - A combined Sign Up / Sign In page at /login with email + password.
     - On the Sign Up form, include a role selector as a TAB / segmented toggle
     at the top of the form with two options labeled "Customer" (role value
@@ -87,7 +86,11 @@ npm test         # vitest
 ```
 
 Supabase is configured through `VITE_SUPABASE_URL` and
-`VITE_SUPABASE_PUBLISHABLE_KEY` (see `.env`).
+`VITE_SUPABASE_PUBLISHABLE_KEY` (see `.env` and `.env.example`). They point at
+our own Supabase project; the publishable key (`sb_publishable_*`) is
+browser-safe and replaces the legacy anon key. Values are trimmed, so stray
+spaces are harmless. The client is created once in
+`src/integrations/supabase/client.ts`.
 
 ## Deploying to Vercel
 

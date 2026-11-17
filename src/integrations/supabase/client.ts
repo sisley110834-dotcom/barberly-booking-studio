@@ -27,8 +27,10 @@ function createSupabaseFetch(supabaseUrl: string, supabaseKey: string): typeof f
 
 function createSupabaseClient() {
   // Vite inlines VITE_* variables at build time.
-  const SUPABASE_URL: string | undefined = import.meta.env['VITE_SUPABASE_URL'];
-  const SUPABASE_PUBLISHABLE_KEY: string | undefined = import.meta.env['VITE_SUPABASE_PUBLISHABLE_KEY'];
+  // Values are trimmed so stray leading/trailing spaces (e.g. pasted into Vercel) don't break requests.
+  const SUPABASE_URL = (import.meta.env['VITE_SUPABASE_URL'] as string | undefined)?.trim() || undefined;
+  const SUPABASE_PUBLISHABLE_KEY =
+    (import.meta.env['VITE_SUPABASE_PUBLISHABLE_KEY'] as string | undefined)?.trim() || undefined;
 
   if (!SUPABASE_URL || !SUPABASE_PUBLISHABLE_KEY) {
     const missing = [

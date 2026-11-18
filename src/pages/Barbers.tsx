@@ -22,21 +22,21 @@ export default function BarbersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border">
+    <div className="min-h-screen">
+      <header className="border-b border-white/70 bg-white/40 backdrop-blur">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 md:px-8">
           <Wordmark />
           <div className="flex min-w-0 items-center gap-3 text-sm">
             <span className="truncate">Hi {user.email}</span>
             {barber && (
-              <span className="rounded-full bg-accent px-2.5 py-0.5 text-xs font-medium text-accent-foreground">barber</span>
+              <span className="rounded-full bg-balloon-pink px-2.5 py-0.5 text-xs font-medium text-accent-foreground">barber</span>
             )}
             <Button variant="pillOutline" size="sm" onClick={signOut}>Sign Out</Button>
           </div>
         </div>
       </header>
       <main className="mx-auto max-w-3xl px-5 py-24 text-center md:px-8">
-        <div className="animate-fade-up rounded-[2rem] bg-beige px-8 py-16">
+        <div className="animate-fade-up cloud-panel rounded-[3rem] px-8 py-16">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">Coming soon</p>
           {barber ? (
             <>

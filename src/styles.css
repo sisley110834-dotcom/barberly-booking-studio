@@ -71,50 +71,63 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-beige: var(--beige);
   --color-star: var(--star);
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
+  --color-balloon-yellow: var(--balloon-yellow);
+  --color-balloon-mint: var(--balloon-mint);
+  --color-balloon-blue: var(--balloon-blue);
+  --color-balloon-pink: var(--balloon-pink);
+  --font-serif: "Quicksand", "Nunito", system-ui, sans-serif;
+  --font-sans: "Nunito", system-ui, sans-serif;
   --shadow-soft: var(--shadow-soft);
   --shadow-lift: var(--shadow-lift);
 }
 
 :root {
-  --radius: 1rem;
-  --background: oklch(0.99 0.004 85);
-  --foreground: oklch(0.18 0.01 60);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.01 60);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.01 60);
-  --primary: oklch(0.17 0.008 60);
-  --primary-foreground: oklch(0.98 0.006 85);
-  --secondary: oklch(0.95 0.018 80);
-  --secondary-foreground: oklch(0.25 0.02 60);
-  --muted: oklch(0.96 0.012 80);
-  --muted-foreground: oklch(0.5 0.02 65);
-  --accent: oklch(0.9 0.035 75);
-  --accent-foreground: oklch(0.22 0.02 60);
+  /* Pastel balloon sky: airy blues, glossy yellow / mint / baby-blue / blush accents */
+  --radius: 1.25rem;
+  --background: oklch(0.96 0.02 225);
+  --foreground: oklch(0.3 0.045 245);
+  --card: oklch(1 0 0 / 0.78);
+  --card-foreground: oklch(0.3 0.045 245);
+  --popover: oklch(0.995 0.005 225);
+  --popover-foreground: oklch(0.3 0.045 245);
+  --primary: oklch(0.52 0.085 238);
+  --primary-foreground: oklch(0.99 0.005 225);
+  --secondary: oklch(0.93 0.045 225);
+  --secondary-foreground: oklch(0.32 0.05 240);
+  --muted: oklch(0.95 0.025 225 / 0.7);
+  --muted-foreground: oklch(0.48 0.04 240);
+  --accent: oklch(0.9 0.07 20);
+  --accent-foreground: oklch(0.35 0.06 20);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.91 0.015 78);
-  --input: oklch(0.91 0.015 78);
-  --ring: oklch(0.6 0.04 70);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.98 0.006 85);
-  --sidebar-foreground: oklch(0.18 0.01 60);
-  --sidebar-primary: oklch(0.17 0.008 60);
-  --sidebar-primary-foreground: oklch(0.98 0.006 85);
-  --sidebar-accent: oklch(0.95 0.018 80);
-  --sidebar-accent-foreground: oklch(0.22 0.02 60);
-  --sidebar-border: oklch(0.91 0.015 78);
-  --sidebar-ring: oklch(0.6 0.04 70);
-  --beige: oklch(0.93 0.03 78);
-  --star: oklch(0.72 0.14 75);
-  --shadow-soft: 0 1px 2px oklch(0.3 0.02 60 / 0.04), 0 8px 24px -12px oklch(0.3 0.02 60 / 0.12);
-  --shadow-lift: 0 2px 4px oklch(0.3 0.02 60 / 0.05), 0 24px 48px -20px oklch(0.3 0.02 60 / 0.25);
+  --border: oklch(0.88 0.035 228);
+  --input: oklch(0.86 0.04 228);
+  --ring: oklch(0.7 0.09 230);
+  --chart-1: oklch(0.86 0.07 225);
+  --chart-2: oklch(0.88 0.08 155);
+  --chart-3: oklch(0.94 0.08 100);
+  --chart-4: oklch(0.86 0.07 20);
+  --chart-5: oklch(0.6 0.08 238);
+  --sidebar: oklch(0.97 0.015 225);
+  --sidebar-foreground: oklch(0.3 0.045 245);
+  --sidebar-primary: oklch(0.52 0.085 238);
+  --sidebar-primary-foreground: oklch(0.99 0.005 225);
+  --sidebar-accent: oklch(0.93 0.045 225);
+  --sidebar-accent-foreground: oklch(0.32 0.05 240);
+  --sidebar-border: oklch(0.88 0.035 228);
+  --sidebar-ring: oklch(0.7 0.09 230);
+  /* "beige" panels become a translucent cloud-white */
+  --beige: oklch(0.99 0.008 225 / 0.6);
+  --star: oklch(0.82 0.13 90);
+  --balloon-yellow: oklch(0.95 0.07 100);
+  --balloon-mint: oklch(0.91 0.065 155);
+  --balloon-blue: oklch(0.88 0.06 225);
+  --balloon-pink: oklch(0.89 0.06 25);
+  --sky-top: oklch(0.76 0.07 237);
+  --sky-mid: oklch(0.85 0.05 228);
+  --sky-low: oklch(0.95 0.02 220);
+  --shadow-soft: 0 1px 2px oklch(0.45 0.06 240 / 0.06), 0 10px 28px -12px oklch(0.45 0.08 240 / 0.25);
+  --shadow-lift: 0 2px 6px oklch(0.45 0.06 240 / 0.08), 0 28px 56px -22px oklch(0.45 0.08 240 / 0.4);
 }
 
 @layer base {
@@ -123,14 +136,17 @@
   }
 
   body {
-    background-color: var(--color-background);
+    min-height: 100vh;
+    background-color: var(--sky-mid);
+    background-image: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-low) 100%);
+    background-attachment: fixed;
     color: var(--color-foreground);
   }
 }
 
 @layer base {
   body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
-  h1, h2, h3 { font-family: var(--font-serif); letter-spacing: -0.01em; }
+  h1, h2, h3 { font-family: var(--font-serif); font-weight: 600; letter-spacing: -0.015em; }
 }
 
 @keyframes fade-up {
@@ -144,4 +160,43 @@
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   box-shadow: var(--shadow-soft);
   &:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
+}
+
+/* Glossy "balloon" surface: soft highlight top-left, gentle inner shading */
+@utility glossy {
+  background-image:
+    radial-gradient(80% 120% at 30% 0%, oklch(1 0 0 / 0.45) 0%, oklch(1 0 0 / 0) 55%),
+    radial-gradient(140% 120% at 80% 100%, oklch(0.45 0.06 240 / 0.08) 0%, oklch(0.45 0.06 240 / 0) 60%);
+  box-shadow:
+    inset 0 2px 4px oklch(1 0 0 / 0.7),
+    inset 0 -6px 14px oklch(0.45 0.06 240 / 0.1),
+    var(--shadow-soft);
+}
+/* Frosted cloud panel */
+@utility cloud-panel {
+  background-color: oklch(1 0 0 / 0.55);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border: 1px solid oklch(1 0 0 / 0.7);
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.8), var(--shadow-soft);
+}
+
+@keyframes balloon-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1.2deg); }
+}
+@keyframes cloud-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(28px); }
+}
+@utility balloon-bob {
+  animation: balloon-bob 7s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+@utility cloud-drift {
+  animation: cloud-drift 40s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .balloon-bob, .cloud-drift, .animate-fade-up { animation: none; }
 }

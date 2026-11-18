@@ -29,6 +29,8 @@ const FEATURES = [
   { icon: Sparkles, label: "Top-Rated Styles" },
 ];
 
+const BALLOON_BG = ["bg-balloon-yellow", "bg-balloon-mint", "bg-balloon-blue", "bg-balloon-pink"];
+
 const BARBERS = [
   { name: "Marco Rossi", shop: "Rossi Barber Club · Brooklyn", services: ["Cut", "Beard"], rating: 4.9, reviews: 312, from: 35, img: barber1 },
   { name: "Elise Laurent", shop: "Atelier Laurent · SoHo", services: ["Cut", "Color", "Perm"], rating: 4.8, reviews: 268, from: 60, img: barber2 },
@@ -38,7 +40,7 @@ const BARBERS = [
 
 function SearchBox({ className = "" }: { className?: string }) {
   return (
-    <label className={`flex items-center gap-3 rounded-full border border-border bg-card px-5 ${className}`}>
+    <label className={`flex items-center gap-3 rounded-full border border-white/80 bg-white/80 px-5 backdrop-blur ${className}`}>
       <Search className="h-4 w-4 text-muted-foreground" />
       <input
         type="search"
@@ -55,7 +57,7 @@ export default function Index() {
   const visible = active === "All" ? BARBERS : BARBERS.filter((b) => b.services.includes(active));
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       <header className="mx-auto flex max-w-7xl items-center gap-6 px-5 py-5 md:px-8">
         <Wordmark />
         <SearchBox className="hidden h-10 flex-1 max-w-md md:ml-auto md:flex" />
@@ -67,10 +69,10 @@ export default function Index() {
       <main>
         {/* Hero */}
         <section className="mx-auto max-w-7xl px-5 pt-6 pb-16 md:px-8">
-          <div className="relative overflow-hidden rounded-[2rem] bg-beige px-5 py-14 md:py-20">
+          <div className="cloud-panel relative overflow-hidden rounded-[3rem] px-5 py-14 md:py-20">
             <div className="grid items-center gap-8 md:grid-cols-[1fr_1.4fr_1fr]">
               <img src={heroLeft} alt="Textured quiff haircut" width={768} height={1024}
-                className="animate-fade-up mx-auto hidden aspect-[3/4] w-full max-w-[260px] rounded-[1.5rem] object-cover md:block" />
+                className="animate-fade-up mx-auto hidden aspect-[3/4] w-full max-w-[260px] rounded-[2.5rem] object-cover ring-4 ring-balloon-yellow shadow-lift md:block" />
               <div className="animate-fade-up text-center [animation-delay:120ms]">
                 <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">New Look</p>
                 <h1 className="mt-4 text-5xl font-medium leading-[1.02] text-foreground md:text-7xl">
@@ -81,7 +83,7 @@ export default function Index() {
                   {SERVICES.map((s) => (
                     <button key={s} onClick={() => setActive(s)}
                       className={`rounded-full px-4 py-1.5 text-sm transition-colors ${
-                        active === s ? "bg-primary text-primary-foreground" : "bg-card text-foreground hover:bg-secondary"
+                        active === s ? "glossy bg-primary text-primary-foreground" : "bg-white/80 text-foreground shadow-soft hover:bg-secondary"
                       }`}>
                       {s}
                     </button>
@@ -89,14 +91,14 @@ export default function Index() {
                 </div>
               </div>
               <img src={heroRight} alt="Wavy bob hairstyle" width={768} height={1024}
-                className="animate-fade-up mx-auto hidden aspect-[3/4] w-full max-w-[260px] rounded-[1.5rem] object-cover [animation-delay:240ms] md:block" />
+                className="animate-fade-up mx-auto hidden aspect-[3/4] w-full max-w-[260px] rounded-[2.5rem] object-cover ring-4 ring-balloon-pink shadow-lift [animation-delay:240ms] md:block" />
             </div>
           </div>
         </section>
 
         {/* Trust strip */}
         <section className="mx-auto max-w-7xl px-5 md:px-8">
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 border-y border-border py-8 text-muted-foreground">
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 border-y border-white/70 py-8 text-muted-foreground">
             {BRANDS.map((b) => <span key={b.name} className={b.cls}>{b.name}</span>)}
           </div>
         </section>
@@ -107,8 +109,8 @@ export default function Index() {
           <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
             {FEATURES.map(({ icon: Icon, label }, i) => (
               <div key={label} style={{ animationDelay: `${i * 90}ms` }}
-                className="animate-fade-up flex flex-col items-center gap-4 rounded-[1.5rem] bg-muted px-4 py-8 text-center">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-card shadow-soft">
+                className={`glossy animate-fade-up flex flex-col items-center gap-4 rounded-[2.5rem] px-4 py-8 text-center ${BALLOON_BG[i % BALLOON_BG.length]}`}>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/85 shadow-soft">
                   <Icon className="h-5 w-5 text-foreground" strokeWidth={1.6} />
                 </span>
                 <span className="text-sm font-medium">{label}</span>
@@ -126,18 +128,18 @@ export default function Index() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {visible.map((b) => (
               <a key={b.name} href="#" onClick={(e) => e.preventDefault()}
-                className="card-lift group block overflow-hidden rounded-[1.5rem] bg-card">
+                className="card-lift group block overflow-hidden rounded-[2rem] border border-white/80 bg-card backdrop-blur">
                 <div className="relative">
                   <img src={b.img} alt={b.name} width={768} height={960} loading="lazy"
-                    className="aspect-[4/5] w-full object-cover" />
-                  <span className="absolute left-3 top-3 rounded-full bg-card/90 px-3 py-1 text-xs font-medium backdrop-blur">Popular</span>
+                    className="aspect-[4/5] w-full rounded-b-[2rem] object-cover" />
+                  <span className="absolute left-3 top-3 rounded-full bg-balloon-yellow/90 px-3 py-1 text-xs font-medium backdrop-blur">Popular</span>
                 </div>
                 <div className="p-5">
                   <h3 className="text-2xl font-medium">{b.name}</h3>
                   <p className="mt-0.5 text-sm text-muted-foreground">{b.shop}</p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {b.services.map((s) => (
-                      <span key={s} className="rounded-full bg-secondary px-2.5 py-0.5 text-xs text-secondary-foreground">{s}</span>
+                      <span key={s} className="rounded-full bg-balloon-mint px-2.5 py-0.5 text-xs text-secondary-foreground">{s}</span>
                     ))}
                   </div>
                   <div className="mt-4 flex items-center justify-between text-sm">
@@ -155,7 +157,7 @@ export default function Index() {
         </section>
       </main>
 
-      <footer className="border-t border-border">
+      <footer className="border-t border-white/70">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-8 text-sm text-muted-foreground md:px-8">
           <span className="font-serif text-lg text-foreground">Barberly</span>
           <span>© 2026 Barberly</span>

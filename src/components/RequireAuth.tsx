@@ -28,7 +28,7 @@ export function RequireAuth() {
     };
   }, []);
 
-  if (state.status === "loading") return <div className="min-h-screen bg-background" />;
+  if (state.status === "loading") return <div className="min-h-screen" />;
   if (state.status === "out") return <Navigate to="/login" replace />;
   return <Outlet context={state.user} />;
 }

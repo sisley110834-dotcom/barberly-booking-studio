@@ -33,25 +33,25 @@ export default function LoginPage() {
     navigate("/barbers");
   }
 
-  const input = "h-12 w-full rounded-xl border border-input bg-card px-4 text-sm outline-none focus:ring-2 focus:ring-ring";
+  const input = "h-12 w-full rounded-full border border-white/80 bg-white/85 px-5 text-sm outline-none focus:ring-2 focus:ring-ring";
 
   return (
-    <div className="min-h-screen bg-beige">
+    <div className="min-h-screen">
       <header className="mx-auto max-w-7xl px-5 py-5 md:px-8"><Wordmark /></header>
       <main className="flex justify-center px-5 pb-20 pt-6">
-        <div className="animate-fade-up w-full max-w-md rounded-[2rem] bg-card p-8 shadow-lift">
+        <div className="animate-fade-up cloud-panel w-full max-w-md rounded-[2.5rem] p-8">
           <h1 className="text-center text-4xl font-medium">{mode === "signin" ? "Welcome back" : "Create your account"}</h1>
           <p className="mt-2 text-center text-sm text-muted-foreground">
             {mode === "signin" ? "Sign in to book your next look." : "Join Barberly in a few seconds."}
           </p>
 
           {mode === "signup" && (
-            <div role="tablist" aria-label="Account type" className="mt-6 grid grid-cols-2 rounded-full bg-muted p-1">
+            <div role="tablist" aria-label="Account type" className="mt-6 grid grid-cols-2 rounded-full bg-balloon-blue/70 p-1">
               {ROLE_OPTIONS.map((o) => (
                 <button key={o.value} type="button" role="tab" aria-selected={role === o.value}
                   onClick={() => setRole(o.value)}
                   className={`rounded-full py-2 text-sm font-medium transition-colors ${
-                    role === o.value ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+                    role === o.value ? "glossy bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
                   }`}>
                   {o.label}
                 </button>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { RequireAuth } from "@/components/RequireAuth";
+import { SkyBackdrop } from "@/components/SkyBackdrop";
 import { supabase } from "@/integrations/supabase/client";
 import Barbers from "@/pages/Barbers";
 import Index from "@/pages/Index";
@@ -34,6 +35,7 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SkyBackdrop />
       <AppRoutes />
     </QueryClientProvider>
   );

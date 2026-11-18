@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { DEFAULT_ROLE, ROLE_OPTIONS, isBarber } from "@/lib/roles";
+import {
+  CUSTOMER_HOME,
+  DEFAULT_ROLE,
+  ROLE_OPTIONS,
+  SHOP_HOME,
+  homePathFor,
+  isShop,
+} from "@/lib/roles";
 
 describe("roles", () => {
   it("defaults sign-up role to customer", () => {
@@ -9,9 +16,17 @@ describe("roles", () => {
     expect(ROLE_OPTIONS.find((o) => o.label === "Barber")?.value).toBe("shop");
     expect(ROLE_OPTIONS.find((o) => o.label === "Customer")?.value).toBe("customer");
   });
-  it("only shop accounts are barbers", () => {
-    expect(isBarber({ role: "shop" })).toBe(true);
-    expect(isBarber({ role: "customer" })).toBe(false);
-    expect(isBarber({})).toBe(false);
+  it("only shop profiles are shops", () => {
+    expect(isShop("shop")).toBe(true);
+    expect(isShop("customer")).toBe(false);
+    expect(isShop(undefined)).toBe(false);
+  });
+  it("routes shops to the dashboard and everyone else to the customer landing", () => {
+    expect(homePathFor("shop")).toBe(SHOP_HOME);
+    expect(homePathFor("customer")).toBe(CUSTOMER_HOME);
+    expect(homePathFor(null)).toBe(CUSTOMER_HOME);
+  });
+  it("sign-up options never include admin", () => {
+    expect(ROLE_OPTIONS.map((o) => o.value)).not.toContain("admin");
   });
 });
